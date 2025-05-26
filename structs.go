@@ -8,15 +8,15 @@ type Items struct {
 type Research struct {
 	Name string
 	RPcost int
-	RequiredResearches map[string]*ResearchRequirements
+	RequiredResearches map[*ResearchRequirements]any
 }
 
 type ResearchRequirements struct {
-	RequiredResearches map[string]*Research
+	RequiredResearches ResearchTree /// basically tree of requirements needed
 }
 
 type ResearchTree struct {
-	Researches map[string]*Research
+	Researches map[*Research]any
 }
 
 type Machine struct {
@@ -27,7 +27,7 @@ type Machine struct {
 	ItemYield map[Items]any
 	PowerInput float32
 	PowerOutput float32 /// for generators
-	ResearchNeeded string
+	ResearchNeeded Research
 }
 
 type MachineList struct {
@@ -35,5 +35,7 @@ type MachineList struct {
 	Tier int
 	Machines map[string]*Machine
 }
+
+
 
 
